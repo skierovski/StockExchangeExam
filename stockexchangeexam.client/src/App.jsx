@@ -1,49 +1,31 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import SaleForm from './components/SaleForm';
+import Result from './components/Result';
+import './App.css'
 
-function App() {
-    const [forecasts, setForecasts] = useState();
+const App = () => {
+    const [profit, setProfit] = useState(null);
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
+    const handleCalculate = async (saleRequest) => {
+        const response = await fetch('/api/accounting/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(saleRequest),
+        });
 
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+        const result = await response.json();
+        setProfit(result);
+    };
 
     return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+        <div class="section">
+            <h1>Stock Profit Calculator</h1>
+            <SaleForm onCalculate={handleCalculate} />
+            {profit !== null && <Result profit={profit} />}
         </div>
     );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
-}
+};
 
 export default App;
