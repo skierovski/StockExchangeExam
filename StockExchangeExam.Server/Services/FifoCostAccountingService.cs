@@ -6,6 +6,12 @@ namespace StockExchangeExam.Server.Services
     {
         public decimal CalculateProfit(List<StockPurchase> stockPurchases, int sharesToSell, decimal sellingPricePerShare)
         {
+            // Validate input to ensure stock purchases are not null or empty
+            if (stockPurchases == null || !stockPurchases.Any())
+            {
+                throw new ArgumentException("Stock purchases cannot be null or empty.");
+            }
+
             // Validate input to ensure shares to sell and selling price are greater than zero
             if (sharesToSell <= 0 || sellingPricePerShare <= 0)
             {
@@ -13,6 +19,7 @@ namespace StockExchangeExam.Server.Services
             }
 
             int totalShares = stockPurchases.Sum(sp => sp.Shares);
+            // Validate input to ensure the user has enough shares to sell
             if (totalShares < sharesToSell) 
             {
                 throw new ArgumentException("You do not have that much of shares to sell");
