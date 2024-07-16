@@ -55,8 +55,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="CalcuationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockExchangeExam.Server\StockExchangeExam.Server.csproj">
+      <Project>{208384f1-3dd6-40c3-ae4b-fd0e1134f50f}</Project>
+      <Name>StockExchangeExam.Server</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
