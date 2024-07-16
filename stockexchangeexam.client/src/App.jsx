@@ -7,6 +7,7 @@ const App = () => {
     const [profit, setProfit] = useState(null);
     const [error, setError] = useState(null);
 
+    // Ajax call to the backend to calculate the profit
     const handleCalculate = async (saleRequest) => {
         try {
             const response = await fetch('https://localhost:7272/api/Accounting/calculate', {
@@ -16,7 +17,7 @@ const App = () => {
                 },
                 body: JSON.stringify(saleRequest),
             });
-            // very simple exemption handling
+            // Very simple exemption handling
             if (!response.ok) {
                 throw new Error('Failed to calculate profit');
             }

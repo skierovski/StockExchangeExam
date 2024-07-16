@@ -12,6 +12,12 @@ namespace StockExchangeExam.Server.Services
                 throw new ArgumentException("Shares to sell and selling price must be greater than zero.");
             }
 
+            int totalShares = stockPurchases.Sum(sp => sp.Shares);
+            if (totalShares < sharesToSell) 
+            {
+                throw new ArgumentException("You do not have that much of shares to sell");
+            }
+
             // Sort the stock purchases by purchase date to apply FIFO logic
             stockPurchases = stockPurchases.OrderBy(sp => sp.PurchaseDate).ToList();
             int remainingShares = sharesToSell;

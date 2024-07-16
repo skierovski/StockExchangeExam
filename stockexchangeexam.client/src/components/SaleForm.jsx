@@ -1,6 +1,6 @@
 // src/components/SaleForm.js
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const SaleForm = ({ onCalculate }) => {
     const [sharesToSell, setSharesToSell] = useState('');

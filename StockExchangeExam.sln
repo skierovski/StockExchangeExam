@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeExam.Server", "StockExchangeExam.Server\StockExchangeExam.Server.csproj", "{208384F1-3DD6-40C3-AE4B-FD0E1134F50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchangeExam.Server", "StockExchangeExam.Server\StockExchangeExam.Server.csproj", "{208384F1-3DD6-40C3-AE4B-FD0E1134F50F}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "stockexchangeexam.client", "stockexchangeexam.client\stockexchangeexam.client.esproj", "{ADAE7EA2-0DBB-4924-A48C-9B5C9163046A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeTests", "StockExchangeTests\StockExchangeTests.csproj", "{8F97C53F-8D3B-4B24-8AB5-F6BE07CDBA87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{ADAE7EA2-0DBB-4924-A48C-9B5C9163046A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADAE7EA2-0DBB-4924-A48C-9B5C9163046A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADAE7EA2-0DBB-4924-A48C-9B5C9163046A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8F97C53F-8D3B-4B24-8AB5-F6BE07CDBA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F97C53F-8D3B-4B24-8AB5-F6BE07CDBA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F97C53F-8D3B-4B24-8AB5-F6BE07CDBA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F97C53F-8D3B-4B24-8AB5-F6BE07CDBA87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
