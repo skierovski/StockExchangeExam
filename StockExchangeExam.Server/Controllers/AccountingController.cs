@@ -23,9 +23,20 @@ namespace StockExchangeExam.Server.Controllers
         [Route("calculate")]
         public IActionResult Calculate([FromBody] SalesRequest salesRequest)
         {
-            var stockPurchases = _repository.GetAll();
-            var profit = _service.CalculateProfit(stockPurchases, salesRequest.SharesToSell, salesRequest.SellingPricePerShare);
-            return Ok(profit);
+            try
+            {
+                var stockPurchases = _repository.GetAll();
+                var profit = _service.CalculateProfit(stockPurchases, salesRequest.SharesToSell, salesRequest.SellingPricePerShare);
+                return Ok(profit);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while calculating profit. Please try again later." });
+            }
         }
     }
 }
