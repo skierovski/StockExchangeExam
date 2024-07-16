@@ -17,14 +17,12 @@ namespace StocksExchangeTests
         [SetUp]
         public void SetUp()
         {
-            // Initialize your service here
             _costAccountingService = new FifoCostAccountingService();
         }
 
         [Test]
         public void TestCalculateSale()
         {
-            // Arrange
             var purchaseLots = new List<StockPurchase>
                 {
                     new StockPurchase { Shares = 100, PricePerShare = 20, PurchaseDate = new DateTime(2023, 1, 1) },
@@ -34,11 +32,9 @@ namespace StocksExchangeTests
             int sharesToSell = 200;
             decimal sellingPricePerShare = 40;
 
-            // Act
             var result = _costAccountingService.CalculateProfit(purchaseLots, sharesToSell, sellingPricePerShare);
 
-            // Assert
-            Assert.That(result, Is.EqualTo(3000)); // Corrected to have only one assertion that matches expected outcome
+            Assert.That(result, Is.EqualTo(3000)); 
         }
     }
 }
