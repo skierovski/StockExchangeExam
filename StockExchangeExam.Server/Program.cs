@@ -13,6 +13,19 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IStockPurchaseRepository, InMemoryPurchaseRepository>();
 builder.Services.AddSingleton<ICostAccountingService, FifoCostAccountingService>();
 
+// Enabling all so there is not problem with diffrent localhost ports
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -28,6 +41,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
